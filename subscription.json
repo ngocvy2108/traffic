@@ -1,0 +1,26 @@
+{
+  "description": "Notify QuantumLeap of TrafficFlowObserved changes",
+  "subject": {
+    "entities": [
+      {
+        "idPattern": ".*",
+        "type": "TrafficFlowObserved"
+      }
+    ]
+  },
+  "notification": {
+    "http": {
+      "url": "http://quantumleap:8668/v2/notify"
+    },
+    "attrs": [
+      "intensity",
+      "occupancy",
+      "averageVehicleSpeed",
+      "laneDirection",
+      "laneId",
+      "location"
+    ],
+    "attrsFormat": "normalized"
+  },
+  "throttling": 1
+}

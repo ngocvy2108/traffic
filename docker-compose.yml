@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  mongo-db:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo_data:/data/db
+
+  orion:
+    image: fiware/orion
+    ports:
+      - "1026:1026"
+    command: -dbURI mongodb://mongo-db:27017 -logLevel DEBUG
+    volumes:
+      - ./orion_data:/opt/contextBroker 
+    depends_on:
+      - mongo-db
+    restart: always
+
+  crate-db:
+    image: crate:latest
+    hostname: crate-db
+    container_name: fiware-crate
+    command: crate -Cnetwork.host=_site_ -Ccluster.name=fiware-cluster
+    ports:
+      - "4200:4200"
+      - "5432:5432"
+    volumes:
+      - ./crate_data:/data
+
+  quantumleap:
+    image: orchestracities/quantumleap
+    hostname: quantumleap
+    container_name: fiware-quantumleap
+    depends_on:
+      - orion
+      - crate-db
+    ports:
+      - "8668:8668"
+    environment:
+      - QL_DB=crate
+      - CRATE_HOST=crate-db
+      - LOGLEVEL=DEBUG
+    restart: always

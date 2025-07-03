@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bảng điều khiển Giao thông Thông minh</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Bảng điều khiển Giao thông Thông minh tại Ngã tư</h2>
+
+  <div id="map"></div>
+
+  <div id="info">
+    <!-- Hướng Bắc - Nam -->
+    <div class="info-block">
+      <canvas id="chart_ns" width="280" height="200"></canvas>
+      <div class="info-text" id="info_text_ns"></div>
+      <div class="light-status"><b>Đèn giao thông 🚦</b>
+        <i id="icon_ns" class="fas fa-circle green-icon"></i>
+        <p>Xe chờ: <span id="queue_ns">0</span></p>
+        <p>Đèn xanh: <span id="green_ns">0</span> giây</p>
+        <p>Đèn đỏ: <span id="red_ns">0</span> giây</p>
+      </div>
+    </div>
+
+    <!-- Hướng Đông - Tây -->
+    <div class="info-block">
+      <canvas id="chart_ew" width="280" height="200"></canvas>
+      <div class="info-text" id="info_text_ew"></div>
+      <div class="light-status"><b>Đèn giao thông 🚦</b>
+        <i id="icon_ew" class="fas fa-circle red-icon"></i>
+        <p>Xe chờ: <span id="queue_ew">0</span></p>
+        <p>Đèn xanh: <span id="green_ew">0</span> giây</p>
+        <p>Đèn đỏ: <span id="red_ew">0</span> giây</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

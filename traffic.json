@@ -1,0 +1,30 @@
+{
+  "id": "TrafficFlowObserved:road-001",
+  "type": "TrafficFlowObserved",
+  "intensity": {
+    "type": "Number",
+    "value": 20
+  },
+  "occupancy": {
+    "type": "Number",
+    "value": 0.5
+  },
+  "averageVehicleSpeed": {
+    "type": "Number",
+    "value": 35
+  },
+  "laneDirection": {
+    "type": "Text",
+    "value": "forward"
+  },
+  "location": {
+    "type": "geo:json",
+    "value": {
+      "type": "LineString",
+      "coordinates": [
+        [105.8525, 21.0285],
+        [105.8530, 21.0290]
+      ]
+    }
+  }
+}
